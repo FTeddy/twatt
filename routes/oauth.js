@@ -6,7 +6,7 @@ const oauthController = require('../controllers/oauth.js')
 /* GET users listing. */
 router.get('/', oauthController.searchHacktivTweet);
 router.get('/timeline', oauthController.ownTimeline);
-router.post('/search', oauthController.searchTwitter);
+router.get('/search', oauthController.searchTwitter);
 router.post('/post', oauthController.postTweet);
 
 

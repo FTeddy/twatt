@@ -83,11 +83,15 @@ module.exports = {
   },
 
   postTweet(req, res){
-    let status = req.query.status
-    oauth.get(
-      `https://api.twitter.com/1.1/statuses/update.json?status=`+ status,
+    let tweet = req.query.status
+    // let query = status.split(' ').join('%20')
+    // console.log(arr);
+    oauth.post(
+      `https://api.twitter.com/1.1/statuses/update.json?status=`+ tweet,
       `${process.env.APPTOKEN}`, //test user token
-      `${process.env.APPSECRET}`, //test user secret
+      `${process.env.APPSECRET}`, //test user secret]
+      req.query.tweet,
+      'tweet',
       function (e, data, response){
         if (e) {
           res.status(500).json({
